@@ -1,4 +1,4 @@
-// 🌸 Hiệu ứng mưa tim
+//  Hiệu ứng mưa tim
 const canvas = document.getElementById("heartRain");
 const ctx = canvas.getContext("2d");
 canvas.width = window.innerWidth;
@@ -44,12 +44,12 @@ function drawHearts(glow = false) {
   });
 }
 
-// 🌼 Phân tích âm thanh
+//  Phân tích âm thanh
 const audio = document.getElementById("audio");
 const lyricsDiv = document.getElementById("lyrics");
 const img = document.getElementById("friendImg");
 
-// 🎵 Lyric theo thời gian
+//  Lyric theo thời gian
 const lyrics = [
   { time: 0, text: "Ngày thay đêm, vội trôi giấc mơ êm đềm" },
   { time: 7, text: "Tôi lênh đênh trên biển vắng" },
@@ -94,7 +94,7 @@ const lyrics = [
 let currentLyricIndex = -1;
 let audioCtx, analyser, dataArray, bufferLength;
 
-// 🌈 Hiển thị karaoke từng chữ
+//  Hiển thị karaoke từng chữ
 function showKaraokeLyric(text, duration = 3000) {
   lyricsDiv.innerHTML = "";
   const chars = text.split("");
@@ -123,7 +123,7 @@ function showKaraokeLyric(text, duration = 3000) {
   }, 60);
 }
 
-// 🎧 Khi phát nhạc → khởi tạo
+//  Khi phát nhạc → khởi tạo
 audio.addEventListener("play", () => {
   if (!audioCtx) {
     audioCtx = new (window.AudioContext || window.webkitAudioContext)();
@@ -138,7 +138,7 @@ audio.addEventListener("play", () => {
   }
 });
 
-// 🌟 Hiệu ứng tổng hợp theo beat
+//  Hiệu ứng tổng hợp theo beat
 function animate() {
   requestAnimationFrame(animate);
   if (!analyser) return;
@@ -146,11 +146,11 @@ function animate() {
   analyser.getByteFrequencyData(dataArray);
   const bass = dataArray.slice(0, 20).reduce((a, b) => a + b, 0) / 20;
 
-  // 💖 Mưa tim sáng theo beat
+  //  Mưa tim sáng theo beat
   const glow = bass > 120;
   drawHearts(glow);
 
-  // 🌈 Viền ảnh đổi màu + nhịp
+  //  Viền ảnh đổi màu + nhịp
   const hue = (bass * 3 + Date.now() / 10) % 360;
   const borderColor = `hsl(${hue}, 100%, 70%)`;
   img.style.border = `6px solid ${borderColor}`;
@@ -159,7 +159,7 @@ function animate() {
     bass / 60
   )}deg)`;
 
-  // 🎤 Cập nhật lyric
+  //  Cập nhật lyric
   const t = audio.currentTime;
   const next = lyrics.findIndex((line) => t < line.time);
   const index = next === -1 ? lyrics.length - 1 : Math.max(0, next - 1);
