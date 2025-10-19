@@ -1,0 +1,101 @@
+/*  Cấu hình tổng thể */
+body {
+  margin: 0;
+  padding: 0;
+  background: radial-gradient(circle at top, #180018 0%, #000 100%);
+  overflow: hidden;
+  font-family: "Poppins", sans-serif;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  color: white;
+  text-align: center;
+}
+
+/*  Tiêu đề */
+h1 {
+  font-size: 2.2rem;
+  margin-top: 40px; /* đẩy tiêu đề cao lên một chút */
+  margin-bottom: 40px;
+  text-shadow: 0 0 20px #ff66b2, 0 0 40px #ff99cc;
+  letter-spacing: 2px;
+  z-index: 2;
+}
+
+/*  Canvas mưa tim nền */
+#heartRain {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/*  Ảnh bạn (phát sáng và rung theo beat) */
+#friendImg {
+  width: 170px;
+  height: 170px;
+  border-radius: 50%;
+  border: 5px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 0 30px rgba(255, 105, 180, 0.8);
+  transition: transform 0.1s ease, box-shadow 0.1s ease, border 0.2s ease;
+  margin-bottom: 50px;
+  z-index: 2;
+}
+
+/*  Phần hiển thị lyric */
+#lyrics {
+  position: relative;
+  bottom: 0;
+  text-align: center;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: 500;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+  width: 80%;
+  margin: 0 auto;
+  z-index: 3;
+  color: #ffe6f7;
+}
+
+/*  Ẩn thanh điều khiển nhạc */
+#audio {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ✨ Hiệu ứng ánh sáng viền tim */
+@keyframes heartGlow {
+  0% {
+    box-shadow: 0 0 10px #ff66b2, 0 0 20px #ff1493;
+  }
+  40% {
+    box-shadow: 0 0 30px #ff3399, 0 0 60px #ff66cc;
+  }
+  70% {
+    box-shadow: 0 0 10px #ff66b2, 0 0 20px #ff1493;
+  }
+}
+
+/*  Responsive */
+@media (max-width: 500px) {
+  h1 {
+    font-size: 1.8rem;
+    margin-top: 30px;
+  }
+
+  #friendImg {
+    width: 130px;
+    height: 130px;
+  }
+
+  #lyrics {
+    font-size: 1.2rem;
+    width: 90%;
+  }
+}
