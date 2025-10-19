@@ -123,7 +123,7 @@ function showKaraokeLyric(text, duration = 3000) {
   }, 60);
 }
 
-//  Khi phát nhạc → khởi tạo
+//  Khi phát nhạc khởi tạo
 audio.addEventListener("play", () => {
   if (!audioCtx) {
     audioCtx = new (window.AudioContext || window.webkitAudioContext)();
